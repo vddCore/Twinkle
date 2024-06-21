@@ -1,0 +1,9 @@
+[submodule "Glitonea"]
+	path = Glitonea
+	url = git@github.com:vddCore/Glitonea.git
+[submodule "Starlight.Framework"]
+	path = Starlight.Framework
+	url = git@github.com:vddCore/Starlight.Framework.git
+[submodule "Glitonea.UI"]
+	path = Glitonea.UI
+	url = git@github.com:vddCore/Glitonea.UI.git

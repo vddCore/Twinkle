@@ -1,0 +1,90 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Twinkle.UI.Controls">
+    <Style Selector="controls|InputModuleSelector">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:InputModuleSelector">
+                <Grid Background="{DynamicResource InputModuleOutlineBackgroundBrush}">
+                    <Svg Name="PART_InputModuleOutline"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Stretch"
+                         Margin="5,15,5,15"
+                         Path="/Assets/Vector/led-input-module-sketch.svg"
+                         Css="{DynamicResource InputModuleOutlineSvgStylesheet}"
+                         Opacity="0.35"
+                         RenderTransformOrigin="50%,50%">
+                        <Svg.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="0:0:0.150" />
+                            </Transitions>
+                        </Svg.Transitions>
+                    </Svg>
+
+                    <Svg Name="PART_InputModuleOutlineFill"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Stretch"
+                         Margin="2.5,0,2.5,0"
+                         Path="/Assets/Vector/led-input-module-sketch-filled.svg"
+                         Css="{DynamicResource InputModuleOutlineFillSvgStylesheet}"
+                         Opacity="0">
+                        <Svg.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="0:0:0.150" />
+                            </Transitions>
+                        </Svg.Transitions>
+                    </Svg>
+
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      FontSize="9"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <ContentPresenter.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="FontSize"
+                                                  Duration="0:0:0.150" 
+                                                  Easing="BackEaseOut"/>
+                            </Transitions>
+                        </ContentPresenter.Transitions>
+                    </ContentPresenter>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Svg#PART_InputModuleOutline">
+            <Setter Property="Opacity" Value="0.45" />
+        </Style>
+
+        <Style Selector="^:pointerover :pressed /template/ Svg#PART_InputModuleOutline">
+            <Setter Property="Opacity" Value="0.25" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Svg#PART_InputModuleOutline">
+            <Setter Property="Opacity" Value="0.25" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Svg#PART_InputModuleOutline">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Svg#PART_InputModuleOutlineFill">
+            <Setter Property="Opacity" Value="0.25" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Svg#PART_InputModuleOutlineFill">
+            <Setter Property="Opacity" Value="0.35" />
+        </Style>
+
+        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <Style
+            Selector="^:checked:pointerover /template/ Svg#PART_InputModuleOutlineFill">
+            <Setter Property="Opacity" Value="0.45" />
+        </Style>
+    </Style>
+</Styles>

@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <system:String x:Key="FrameworkLogoSvgStylesheet">* { fill: #000000; }</system:String>
+            <system:String x:Key="InputModuleOutlineSvgStylesheet">* { stroke: #FFFFFF; }</system:String>
+            
+            <SolidColorBrush x:Key="GenericBorderBrush" Color="#20FFFFFF" />
+            
+            <SolidColorBrush x:Key="WindowCaptionBackgroundBrush" Color="#55000000" />
+            <SolidColorBrush x:Key="WindowCaptionBorderBrush" Color="#20FFFFFF" />
+
+            <SolidColorBrush x:Key="ContextSelectorTabUnselectedBorderBrush" Color="#05FFFFFF" />
+            <SolidColorBrush x:Key="ContextSelectorTabUnselectedBackgroundBrush" Color="Transparent" />
+            <SolidColorBrush x:Key="ContextSelectorTabSelectedBorderBrush" Color="#20FFFFFF" />
+            <SolidColorBrush x:Key="ContextSelectorTabSelectedBackgroundBrush" Color="#10FFFFFF" />
+            <SolidColorBrush x:Key="ContextSelectorTabPointerOverBackgroundBrush" Color="#15FFFFFF" />
+            <SolidColorBrush x:Key="ContextSelectorTabForegroundBrush" Color="#DDFFFFFF" />
+        </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="Light">
+            
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

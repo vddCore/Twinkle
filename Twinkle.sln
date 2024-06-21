@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twinkle", "Twinkle\Twinkle.csproj", "{EDF3A811-5498-4E63-8F8F-893452EB927E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitonea", "Glitonea\Glitonea.csproj", "{0DB5B6B9-1B5F-40D7-AB42-88C55B67BA47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starlight.Framework", "Starlight.Framework\Starlight.Framework\Starlight.Framework.csproj", "{23EDD543-D145-4260-813E-A1E3979DE154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hideous", "Starlight.Framework\Hideous\Hideous\Hideous.csproj", "{4DC602FC-E300-4DDE-AC1E-FC125445BE3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitonea.UI", "Glitonea.UI\Glitonea.UI.csproj", "{C88E09DC-5C2A-4ED1-8607-F09E83E4BF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twinkle.UI", "Twinkle.UI\Twinkle.UI.csproj", "{0152EBEC-B122-47F8-BD27-7AECB9B65217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDF3A811-5498-4E63-8F8F-893452EB927E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF3A811-5498-4E63-8F8F-893452EB927E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF3A811-5498-4E63-8F8F-893452EB927E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF3A811-5498-4E63-8F8F-893452EB927E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB5B6B9-1B5F-40D7-AB42-88C55B67BA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB5B6B9-1B5F-40D7-AB42-88C55B67BA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB5B6B9-1B5F-40D7-AB42-88C55B67BA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB5B6B9-1B5F-40D7-AB42-88C55B67BA47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EDD543-D145-4260-813E-A1E3979DE154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EDD543-D145-4260-813E-A1E3979DE154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EDD543-D145-4260-813E-A1E3979DE154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EDD543-D145-4260-813E-A1E3979DE154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC602FC-E300-4DDE-AC1E-FC125445BE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC602FC-E300-4DDE-AC1E-FC125445BE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC602FC-E300-4DDE-AC1E-FC125445BE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC602FC-E300-4DDE-AC1E-FC125445BE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88E09DC-5C2A-4ED1-8607-F09E83E4BF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88E09DC-5C2A-4ED1-8607-F09E83E4BF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88E09DC-5C2A-4ED1-8607-F09E83E4BF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88E09DC-5C2A-4ED1-8607-F09E83E4BF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0152EBEC-B122-47F8-BD27-7AECB9B65217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0152EBEC-B122-47F8-BD27-7AECB9B65217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0152EBEC-B122-47F8-BD27-7AECB9B65217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0152EBEC-B122-47F8-BD27-7AECB9B65217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

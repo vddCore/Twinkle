@@ -1,0 +1,53 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="RadioButton.MainViewContextSelector">
+        <Setter Property="Background" Value="{DynamicResource ContextSelectorTabUnselectedBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ContextSelectorTabForegroundBrush}" />
+
+        <Setter Property="CornerRadius" Value="6,6,0,0" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="4,4,0,1" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="MinHeight" Value="25" />
+        <Setter Property="FontSize" Value="13" />
+        
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type RadioButton}">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}" 
+                                          Foreground="{TemplateBinding Foreground}"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.150" />
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.150" />
+                <DoubleTransition Property="MinHeight" Duration="0:0:0.150" />
+                <ThicknessTransition Property="Margin" Duration="0:0:0.150" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="RadioButton.MainViewContextSelector:checked">
+        <Setter Property="Background"
+                Value="{DynamicResource ContextSelectorTabSelectedBackgroundBrush}" />
+        
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource ContextSelectorTabSelectedBorderBrush }" />
+    </Style>
+
+    <Style Selector="RadioButton.MainViewContextSelector:pointerover">
+        <Setter Property="Background"
+                Value="{DynamicResource ContextSelectorTabPointerOverBackgroundBrush}" />
+    </Style>
+</Styles>

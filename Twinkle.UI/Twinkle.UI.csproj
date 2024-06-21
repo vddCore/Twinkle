@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.11" />
+    <PackageReference Include="Avalonia.Svg" Version="11.0.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\InputModuleSelector.cs">
+      <DependentUpon>InputModuleSelector.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\Vector\led-input-module-sketch.svg" />
+    <AvaloniaResource Include="Assets\Vector\led-input-module-sketch-filled.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Styles\" />
+  </ItemGroup>
+
+</Project>

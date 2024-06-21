@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <system:String x:Key="InputModuleOutlineSvgStylesheet">* { stroke: #FFFFFF; }</system:String>
+            <system:String x:Key="InputModuleOutlineFillSvgStylesheet">* { stroke: #FFFFFF; } #ind1, #ind2 { stroke-width: 0; fill: #FFFFFF; }</system:String>
+            
+            <SolidColorBrush x:Key="InputModuleOutlineBackgroundBrush" Color="#01FFFFFF" />
+            <SolidColorBrush x:Key="InputModuleSelectionBrush" Color="#FFFFFF" />
+        </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="Light">
+            <system:String x:Key="InputModuleOutlineSvgStylesheet">* { stroke: #000000; }</system:String>
+            <system:String x:Key="InputModuleOutlineFillSvgStylesheet">* { stroke: #000000; } #ind1, #ind2 { stroke-width: 0; fill: #000000; }</system:String>
+            
+            <SolidColorBrush x:Key="InputModuleOutlineBackgroundBrush" Color="#01000000" />
+            <SolidColorBrush x:Key="InputModuleSelectionBrush" Color="#000000" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

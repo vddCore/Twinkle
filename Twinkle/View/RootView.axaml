@@ -1,0 +1,95 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
+             xmlns:vm="clr-namespace:Twinkle.ViewModel"
+             xmlns:view="clr-namespace:Twinkle.View.ContentPages"
+             xmlns:content_vm="clr-namespace:Twinkle.ViewModel.ContentPages"
+             x:Class="Twinkle.View.RootView"
+             DataContext="{mvvm:DataContextSource vm:RootViewModel}">
+    <Grid RowDefinitions="31,*,31">
+        <Border Grid.Row="0"
+                IsHitTestVisible="False"
+                Background="{DynamicResource WindowCaptionBackgroundBrush}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{DynamicResource WindowCaptionBorderBrush}" />
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Classes="MainViewContextSelector"
+                             Content="display control"
+                             IsChecked="True"
+                             Command="{Binding MainViewContextSelectionChanged}"
+                             CommandParameter="{x:Static view:ContentPage.DisplayControl}" />
+
+                <RadioButton Classes="MainViewContextSelector"
+                             Content="settings" 
+                             Command="{Binding MainViewContextSelectionChanged}"
+                             CommandParameter="{x:Static view:ContentPage.Settings}"/>
+
+                <RadioButton Classes="MainViewContextSelector"
+                             Content="scripting" 
+                             Command="{Binding MainViewContextSelectionChanged}"
+                             CommandParameter="{x:Static view:ContentPage.Scripting}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TransitioningContentControl Content="{Binding CurrentContentPageViewModel}">
+                <TransitioningContentControl.PageTransition>
+                    <CompositePageTransition>
+                        <CrossFade Duration="0:0:0.200" />
+                        <PageSlide Duration="0:0:0.500"
+                                   Orientation="Horizontal"
+                                   SlideInEasing="CircularEaseOut"
+                                   SlideOutEasing="CircularEaseIn"/>
+                    </CompositePageTransition>
+                </TransitioningContentControl.PageTransition>
+                
+                <TransitioningContentControl.DataTemplates>
+                    <DataTemplate DataType="content_vm:DisplayControlViewModel">
+                        <view:DisplayControlView />
+                    </DataTemplate>
+                    
+                    <DataTemplate DataType="content_vm:SettingsViewModel">
+                        <view:SettingsView />
+                    </DataTemplate>
+                    
+                    <DataTemplate DataType="content_vm:ScriptingViewModel">
+                        <view:ScriptingView />
+                    </DataTemplate>
+                </TransitioningContentControl.DataTemplates>
+            </TransitioningContentControl>
+            
+            <Svg Path="/Resources/Vector/framework-cog.svg"
+                 Width="500"
+                 Height="500"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Bottom"
+                 Margin="0,0,-200,-200"
+                 Opacity="0.1"
+                 Css="{DynamicResource FrameworkLogoStylesheet}"/>
+        </Grid>
+
+        <Border Grid.Row="2"
+                IsHitTestVisible="False"
+                Background="#55000000"
+                BorderThickness="0,1,0,0"
+                BorderBrush="#22FFFFFF">
+            <Grid ColumnDefinitions="*,Auto"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center">
+                <TextBlock Grid.Column="0"
+                           Text="Sparkle Firmware Control | Framework Laptop 16"
+                           Margin="10,0,0,0"
+                           FontSize="11"
+                           Opacity="0.7" />
+
+                <TextBlock Grid.Column="1"
+                           Text="v0.1.0"
+                           FontSize="11"
+                           Margin="0,0,10,0"
+                           Opacity="0.3" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

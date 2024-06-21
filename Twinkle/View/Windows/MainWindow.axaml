@@ -1,0 +1,17 @@
+<ui:FluentWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:Twinkle.View"
+        xmlns:ui="clr-namespace:Glitonea.UI;assembly=Glitonea.UI"
+        x:Class="Twinkle.View.Windows.MainWindow"
+        TransparencyLevelHint="Mica"
+        WindowStartupLocation="CenterScreen"
+        Title="Framework Laptop 16 - LED matrix control"
+        Width="640"
+        Height="560"
+        CanResize="False"
+        ShowMaximizeButton="False"
+        ShowMinimizeButton="False">
+    <Panel>       
+        <view:RootView />
+    </Panel>
+</ui:FluentWindow>

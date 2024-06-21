@@ -1,0 +1,10 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
+             xmlns:contentPages="clr-namespace:Twinkle.ViewModel.ContentPages"
+             x:Class="Twinkle.View.ContentPages.SettingsView"
+             DataContext="{mvvm:DataContextSource contentPages:SettingsViewModel}">
+    <TextBlock Text="Settings will be here one day." 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+</UserControl>

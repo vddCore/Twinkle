@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>TestDriverPlugin.twext</AssemblyName>
+    <UseCompiledBindings>false</UseCompiledBindings>
   </PropertyGroup>
 
   <ItemGroup>

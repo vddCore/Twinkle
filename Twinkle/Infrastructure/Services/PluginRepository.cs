@@ -1,18 +1,15 @@
 ﻿namespace Twinkle.Infrastructure.Services;
 
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Starlight.Framework;
 using Twinkle.API;
+using Twinkle.Model;
 
 public class PluginRepository : IPluginRepository
 {
-    public DriverPlugin? CurrentlyActivePlugin { get; private set; }
-
-    public ObservableCollection<DriverPlugin> Plugins { get; } = new();
+    public ObservableCollection<PluginModel> Plugins { get; } = new();
 
     public void LoadPlugins(string directory)
     {
@@ -30,30 +27,13 @@ public class PluginRepository : IPluginRepository
 
             foreach (var t in types)
             {
-                var instance = Activator.CreateInstance(t) as DriverPlugin;
-
-                if (instance != null)
+                var attr = t.GetCustomAttribute<DriverPluginAttribute>();
+                
+                if (attr != null)
                 {
-                    Plugins.Add(instance);
+                    Plugins.Add(new PluginModel(t, attr.ID, attr.Name));
                 }
             }
         }
-    }
-
-    public void ActivatePlugin(DriverPlugin plugin, LedDisplay display)
-    {
-        if (CurrentlyActivePlugin != null)
-        {
-            DeactivateCurrentPlugin();
-        }
-
-        CurrentlyActivePlugin = plugin;
-        CurrentlyActivePlugin.Activate(display);
-    }
-
-    public void DeactivateCurrentPlugin()
-    {
-        CurrentlyActivePlugin?.Deactivate();
-        CurrentlyActivePlugin = null;
     }
 }

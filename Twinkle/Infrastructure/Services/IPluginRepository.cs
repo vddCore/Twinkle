@@ -2,15 +2,11 @@
 
 using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
-using Starlight.Framework;
-using Twinkle.API;
+using Twinkle.Model;
 
 public interface IPluginRepository : IService
 {
-    DriverPlugin? CurrentlyActivePlugin { get; }
-    ObservableCollection<DriverPlugin> Plugins { get; }
+    ObservableCollection<PluginModel> Plugins { get; }
 
     void LoadPlugins(string directory);
-    void ActivatePlugin(DriverPlugin plugin, LedDisplay display);
-    void DeactivateCurrentPlugin();
 }

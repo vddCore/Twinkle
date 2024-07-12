@@ -21,7 +21,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
     public double ControlActionListOpacity => IsAnyDisplaySelected ? 1 : 0;
     public double SelectionPromptOpacity => IsAnyDisplaySelected ? 0 : 0.8;
 
-    public ObservableCollection<DriverPlugin> AvailablePlugins => _pluginRepository.Plugins;
+    public ObservableCollection<PluginModel> AvailablePlugins => _pluginRepository.Plugins;
     
     public LedDisplayModel? SelectedDisplay
     {
@@ -40,14 +40,49 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
             {
                 _selectedDisplay.IsSelected = true;
             }
-
+            
             OnPropertyChanged();
             OnPropertyChanged(nameof(IsAnyDisplaySelected));
             OnPropertyChanged(nameof(ControlActionListOpacity));
             OnPropertyChanged(nameof(SelectionPromptOpacity));
+            OnPropertyChanged(nameof(CurrentPluginView));
+        }
+    }
+
+    public PluginModel? CurrentPluginModel
+    {
+        get => SelectedDisplay?.CurrentPluginModel;
+        
+        set
+        {
+            if (SelectedDisplay != null)
+            {
+                SelectedDisplay.CurrentPluginModel = value;
+            }
+            
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(CurrentPluginView));
+        }    
+    }
+
+    public DriverPlugin? CurrentPlugin
+    {
+        get => SelectedDisplay?.CurrentPlugin;
+        
+        set
+        {
+            if (SelectedDisplay != null)
+            {
+                SelectedDisplay.CurrentPlugin = value;
+            }
+
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(CurrentPluginView));
         }
     }
     
+    public object? CurrentPluginView => SelectedDisplay?.CurrentPlugin?.View;
+
     public DisplayControlViewModel(
         IInputModuleControlService inputModuleControlService,
         IPluginRepository pluginRepository)

@@ -15,6 +15,17 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
+                <Button Margin="4,4,-1,2"
+                        VerticalAlignment="Bottom"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding RequestDeviceRescan}"
+                        CornerRadius="6,6,0,0"
+                        Content="&#xE117;"
+                        Padding="8,6,8,5"
+                        FontFamily="Segoe Fluent Icons" 
+                        FontSize="12"
+                        ToolTip.Tip="Rescan devices" />
+                 
                 <RadioButton Classes="MainViewContextSelector"
                              Content="display control"
                              IsChecked="True"
@@ -61,6 +72,7 @@
             </TransitioningContentControl>
             
             <Svg Path="/Resources/Vector/framework-cog.svg"
+                 IsHitTestVisible="False"
                  Width="500"
                  Height="500"
                  HorizontalAlignment="Right"

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Twinkle.UI.Controls.GlyphButton"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Twinkle.UI.Controls">
+    <Button Padding="10,8,8,8"
+            HorizontalAlignment="Stretch"
+            Command="{Binding $parent[local:GlyphButton].Command}"
+            CommandParameter="{Binding $parent[local:GlyphButton].CommandParameter}"
+            HorizontalContentAlignment="Left">
+        <Grid ColumnDefinitions="Auto,*"
+              Margin="4"
+              HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding $parent[local:GlyphButton].Glyph}"
+                       FontSize="{Binding $parent[local:GlyphButton].GlyphSize}"
+                       Foreground="{Binding $parent[local:GlyphButton].GlyphBrush}"
+                       FontFamily="Segoe Fluent Icons"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+
+            <Grid Grid.Column="1"
+                  Margin="12,0,0,0">
+                <StackPanel HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="{Binding $parent[local:GlyphButton].HeaderText}"
+                               FontSize="{Binding $parent[local:GlyphButton].HeaderTextSize}"
+                               Foreground="{Binding $parent[local:GlyphButton].HeaderTextBrush}" />
+
+                    <TextBlock Text="{Binding $parent[local:GlyphButton].SubText}"
+                               FontSize="{Binding $parent[local:GlyphButton].SubTextSize}"
+                               Foreground="{Binding $parent[local:GlyphButton].SubTextBrush}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Button>
+</UserControl>

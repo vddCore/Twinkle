@@ -24,6 +24,7 @@
     <ProjectReference Include="..\Glitonea.UI\Glitonea.UI.csproj" />
     <ProjectReference Include="..\Glitonea\Glitonea.csproj" />
     <ProjectReference Include="..\Starlight.Framework\Starlight.Framework\Starlight.Framework.csproj" />
+    <ProjectReference Include="..\Twinkle.API\Twinkle.API.csproj" />
     <ProjectReference Include="..\Twinkle.UI\Twinkle.UI.csproj" />
   </ItemGroup>
 

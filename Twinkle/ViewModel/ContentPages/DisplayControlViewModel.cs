@@ -2,31 +2,77 @@
 
 using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
-using Infrastructure.Services;
-using Model;
+using Twinkle.API;
+using Twinkle.Infrastructure;
+using Twinkle.Infrastructure.Services;
+using Twinkle.Model;
 
 public class DisplayControlViewModel : SingleInstanceViewModelBase
 {
     private readonly IInputModuleControlService _inputModuleControlService;
+    private readonly IPluginRepository _pluginRepository;
 
+    private LedDisplayModel? _selectedDisplay;
+    
     public ObservableCollection<LedDisplayModel> Displays { get; private set; } = new();
 
-    public DisplayControlViewModel(IInputModuleControlService inputModuleControlService)
+    public bool IsAnyDisplaySelected => _selectedDisplay != null;
+
+    public double ControlActionListOpacity => IsAnyDisplaySelected ? 1 : 0;
+    public double SelectionPromptOpacity => IsAnyDisplaySelected ? 0 : 0.8;
+
+    public ObservableCollection<DriverPlugin> AvailablePlugins => _pluginRepository.Plugins;
+    
+    public LedDisplayModel? SelectedDisplay
+    {
+        get => _selectedDisplay;
+        
+        set
+        {
+            if (_selectedDisplay != null)
+            {
+                _selectedDisplay.IsSelected = false;
+            }
+
+            _selectedDisplay = value;
+
+            if (_selectedDisplay != null)
+            {
+                _selectedDisplay.IsSelected = true;
+            }
+
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(IsAnyDisplaySelected));
+            OnPropertyChanged(nameof(ControlActionListOpacity));
+            OnPropertyChanged(nameof(SelectionPromptOpacity));
+        }
+    }
+    
+    public DisplayControlViewModel(
+        IInputModuleControlService inputModuleControlService,
+        IPluginRepository pluginRepository)
     {
         _inputModuleControlService = inputModuleControlService;
-        RefreshDisplayCollection();
+        _pluginRepository = pluginRepository;
+        
+        RescanDisplays();
+        Subscribe<DeviceRescanRequestedMessage>(_ => RescanDisplays());
     }
 
     public void InputModuleSelectionChanged(object? parameter)
     {
-        if (parameter is not LedDisplayModel)
+        if (parameter is not LedDisplayModel ldm)
             return;
-        
-        
-    }
 
-    private void RefreshDisplayCollection()
+        if (SelectedDisplay == ldm)
+            return;
+
+        SelectedDisplay = ldm;
+    }
+    
+    public void RescanDisplays()
     {
+        SelectedDisplay = null;
         Displays.Clear();
 
         var displayModules = _inputModuleControlService.EnumerateDisplays();

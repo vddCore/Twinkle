@@ -7,9 +7,11 @@
             <system:String x:Key="InputModuleOutlineSvgStylesheet">* { stroke: #FFFFFF; }</system:String>
             
             <SolidColorBrush x:Key="GenericBorderBrush" Color="#20FFFFFF" />
-            
+            <SolidColorBrush x:Key="GenericBorderBackgroundBrush" Color="#05FFFFFF" />
             <SolidColorBrush x:Key="WindowCaptionBackgroundBrush" Color="#55000000" />
             <SolidColorBrush x:Key="WindowCaptionBorderBrush" Color="#20FFFFFF" />
+            <SolidColorBrush x:Key="GlyphButtonHeaderTextBrush" Color="#CCFFFFFF" />
+            <SolidColorBrush x:Key="GlyphButtonSubTextBrush" Color="#88FFFFFF" />
 
             <SolidColorBrush x:Key="ContextSelectorTabUnselectedBorderBrush" Color="#05FFFFFF" />
             <SolidColorBrush x:Key="ContextSelectorTabUnselectedBackgroundBrush" Color="Transparent" />

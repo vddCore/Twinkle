@@ -1,7 +1,7 @@
 ﻿namespace Twinkle.View.ContentPages;
 
 using Glitonea.Mvvm;
-using ViewModel.ContentPages;
+using Twinkle.ViewModel.ContentPages;
 
 public static class ContentPage
 {
@@ -13,4 +13,7 @@ public static class ContentPage
 
     public static ScriptingViewModel Scripting { get; } =
         ViewModelResolver.Instance.ResolveSingle<ScriptingViewModel>();
+
+    public static DeveloperViewModel Developer { get; } =
+        ViewModelResolver.Instance.ResolveSingle<DeveloperViewModel>();
 }

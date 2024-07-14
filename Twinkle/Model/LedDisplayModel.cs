@@ -3,11 +3,11 @@
 using System;
 using System.ComponentModel;
 using Starlight.Framework;
-using Twinkle.API;
+using Twinkle.API.Extensibility;
 
 public class LedDisplayModel : INotifyPropertyChanged
 {
-    private DriverPlugin? _currentPlugin;
+    private SingleDisplayController? _currentPlugin;
     private PluginModel? _currentPluginModel;
 
     public LedDisplay Display { get; }
@@ -24,7 +24,7 @@ public class LedDisplayModel : INotifyPropertyChanged
             {
                 _currentPluginModel = value;
                 
-                CurrentPlugin = (DriverPlugin?)Activator.CreateInstance(
+                CurrentPlugin = (SingleDisplayController?)Activator.CreateInstance(
                     _currentPluginModel.PluginType,
                     new object[] { Display }
                 );
@@ -36,7 +36,7 @@ public class LedDisplayModel : INotifyPropertyChanged
         }
     }
 
-    public DriverPlugin? CurrentPlugin
+    public SingleDisplayController? CurrentPlugin
     {
         get => _currentPlugin;
         set

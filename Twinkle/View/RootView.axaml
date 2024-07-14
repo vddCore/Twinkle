@@ -41,6 +41,11 @@
                              Content="scripting" 
                              Command="{Binding MainViewContextSelectionChanged}"
                              CommandParameter="{x:Static view:ContentPage.Scripting}" />
+                
+                <RadioButton Classes="MainViewContextSelector"
+                             Content="developer" 
+                             Command="{Binding MainViewContextSelectionChanged}"
+                             CommandParameter="{x:Static view:ContentPage.Developer}" />
             </StackPanel>
         </Grid>
 
@@ -67,6 +72,10 @@
                     
                     <DataTemplate DataType="content_vm:ScriptingViewModel">
                         <view:ScriptingView />
+                    </DataTemplate>
+                    
+                    <DataTemplate DataType="content_vm:DeveloperViewModel">
+                        <view:DeveloperView />
                     </DataTemplate>
                 </TransitioningContentControl.DataTemplates>
             </TransitioningContentControl>

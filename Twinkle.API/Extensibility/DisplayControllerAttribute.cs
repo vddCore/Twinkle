@@ -1,12 +1,12 @@
-﻿namespace Twinkle.API;
+﻿namespace Twinkle.API.Extensibility;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class DriverPluginAttribute : Attribute
+public class DisplayControllerAttribute : Attribute
 {
     public string ID { get; }
     public string Name { get; set; } = "I forgor :skull:";
 
-    public DriverPluginAttribute(string id)
+    public DisplayControllerAttribute(string id)
     {
         ID = id;
     }

@@ -2,11 +2,14 @@
 
 using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
+using Twinkle.API;
 using Twinkle.Model;
 
-public interface IPluginRepository : IService
+public interface IPluginSystem : IService
 {
+    ApiContext ApiContext { get; }
+    
     ObservableCollection<PluginModel> Plugins { get; }
 
-    void LoadPlugins(string directory);
+    void LoadPlugins();
 }

@@ -1,0 +1,10 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
+             xmlns:contentPages="clr-namespace:Twinkle.ViewModel.ContentPages"
+             x:Class="Twinkle.View.ContentPages.DeveloperView"
+             DataContext="{mvvm:DataContextSource contentPages:DeveloperViewModel}">
+    <TextBlock Text="i can has log view?"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" />
+</UserControl>

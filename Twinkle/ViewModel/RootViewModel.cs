@@ -8,14 +8,14 @@ using Twinkle.View.ContentPages;
 
 public class RootViewModel : ViewModelBase
 {
-    private IPluginRepository _pluginRepository;
+    private IPluginSystem _pluginSystem;
     
     public SingleInstanceViewModelBase CurrentContentPageViewModel { get; private set; } = ContentPage.DisplayControl;
 
-    public RootViewModel(IPluginRepository pluginRepository)
+    public RootViewModel(IPluginSystem pluginSystem)
     {
-        _pluginRepository = pluginRepository;
-        _pluginRepository.LoadPlugins("plugins");
+        _pluginSystem = pluginSystem;
+        _pluginSystem.LoadPlugins();
     }
     
     public void MainViewContextSelectionChanged(object? parameter)

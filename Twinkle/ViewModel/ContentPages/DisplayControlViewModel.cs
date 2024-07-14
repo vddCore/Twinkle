@@ -3,6 +3,7 @@
 using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
 using Twinkle.API;
+using Twinkle.API.Extensibility;
 using Twinkle.Infrastructure;
 using Twinkle.Infrastructure.Services;
 using Twinkle.Model;
@@ -10,7 +11,7 @@ using Twinkle.Model;
 public class DisplayControlViewModel : SingleInstanceViewModelBase
 {
     private readonly IInputModuleControlService _inputModuleControlService;
-    private readonly IPluginRepository _pluginRepository;
+    private readonly IPluginSystem _pluginSystem;
 
     private LedDisplayModel? _selectedDisplay;
     
@@ -21,7 +22,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
     public double ControlActionListOpacity => IsAnyDisplaySelected ? 1 : 0;
     public double SelectionPromptOpacity => IsAnyDisplaySelected ? 0 : 0.8;
 
-    public ObservableCollection<PluginModel> AvailablePlugins => _pluginRepository.Plugins;
+    public ObservableCollection<PluginModel> AvailablePlugins => _pluginSystem.Plugins;
     
     public LedDisplayModel? SelectedDisplay
     {
@@ -65,7 +66,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
         }    
     }
 
-    public DriverPlugin? CurrentPlugin
+    public SingleDisplayController? CurrentPlugin
     {
         get => SelectedDisplay?.CurrentPlugin;
         
@@ -85,10 +86,10 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
 
     public DisplayControlViewModel(
         IInputModuleControlService inputModuleControlService,
-        IPluginRepository pluginRepository)
+        IPluginSystem pluginSystem)
     {
         _inputModuleControlService = inputModuleControlService;
-        _pluginRepository = pluginRepository;
+        _pluginSystem = pluginSystem;
         
         RescanDisplays();
         Subscribe<DeviceRescanRequestedMessage>(_ => RescanDisplays());

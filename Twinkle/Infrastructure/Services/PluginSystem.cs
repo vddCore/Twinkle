@@ -15,12 +15,10 @@ public class PluginSystem : IPluginSystem
     
     public ObservableCollection<PluginModel> Plugins { get; } = new();
 
-    public ApiContext ApiContext { get; }
+    public ApiContext ApiContext => App.ApiContext;
 
     public PluginSystem(ILogService logService)
     {
-        ApiContext = new ApiContext();
-
         _log = logService.GetLog();
     }
 

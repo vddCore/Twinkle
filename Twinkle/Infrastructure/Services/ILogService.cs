@@ -8,7 +8,9 @@ using Twinkle.API.Logging;
 public interface ILogService : IService
 {
     event EventHandler<LogMessage>? LogMessageReceived;
-    
+
+    string LogFilePath { get; }
+
     ILog GetLog();
     ILog GetLog(Assembly assembly);
     

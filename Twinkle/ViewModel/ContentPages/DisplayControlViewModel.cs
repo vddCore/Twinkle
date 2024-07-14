@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
 using Twinkle.API;
 using Twinkle.API.Extensibility;
+using Twinkle.API.Logging;
 using Twinkle.Infrastructure;
 using Twinkle.Infrastructure.Services;
 using Twinkle.Model;
@@ -12,6 +13,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
 {
     private readonly IInputModuleControlService _inputModuleControlService;
     private readonly IPluginSystem _pluginSystem;
+    private readonly ILog _log;
 
     private LedDisplayModel? _selectedDisplay;
     
@@ -86,10 +88,12 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
 
     public DisplayControlViewModel(
         IInputModuleControlService inputModuleControlService,
-        IPluginSystem pluginSystem)
+        IPluginSystem pluginSystem,
+        ILogService logService)
     {
         _inputModuleControlService = inputModuleControlService;
         _pluginSystem = pluginSystem;
+        _log = logService.GetLog();
         
         RescanDisplays();
         Subscribe<DeviceRescanRequestedMessage>(_ => RescanDisplays());
@@ -108,6 +112,8 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
     
     public void RescanDisplays()
     {
+        _log.Info("Rescanning devices...");
+        
         SelectedDisplay = null;
         Displays.Clear();
 
@@ -115,6 +121,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
 
         for (var i = 0; i < displayModules.Count; i++)
         {
+            _log.Info($"  Found display {i}: {displayModules[i].SerialNumber}");
             Displays.Add(new LedDisplayModel(displayModules[i], i));
         }
     }

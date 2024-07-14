@@ -2,9 +2,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
              xmlns:contentPages="clr-namespace:Twinkle.ViewModel.ContentPages"
+             xmlns:behaviors="clr-namespace:Twinkle.Infrastructure.Behaviors"
              x:Class="Twinkle.View.ContentPages.DeveloperView"
              DataContext="{mvvm:DataContextSource contentPages:DeveloperViewModel}">
-    <TextBlock Text="i can has log view?"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center" />
+    <Grid RowDefinitions="*,Auto"
+          Margin="7,7,7,4">
+        <DataGrid Grid.Row="0"
+                  ItemsSource="{Binding LogMessages}"
+                  IsReadOnly="True"
+                  FontSize="12"
+                  SelectionMode="Single"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserSortColumns="False"
+                  BorderBrush="{DynamicResource GenericBorderBrush}"
+                  BorderThickness="1"
+                  CornerRadius="6"
+                  ClipboardCopyMode="None">
+            <Interaction.Behaviors>
+                <behaviors:LogDataGridScrollBehavior />
+            </Interaction.Behaviors>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Time"
+                                    Binding="{Binding Timestamp}"
+                                    FontSize="12" />
+
+                <DataGridTextColumn Header="Severity"
+                                    Binding="{Binding Level}"
+                                    FontSize="12" />
+
+                <DataGridTextColumn Header="Source"
+                                    Binding="{Binding Source}"
+                                    FontSize="12" />
+
+                <DataGridTextColumn Header="Message"
+                                    Binding="{Binding Body}"
+                                    FontSize="12"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Spacing="4"
+                    Margin="0,4,0,0">
+            <Button Content="Open log file" 
+                    Command="{Binding OpenLogFile}" />
+            
+            <Button Content="Clear log" 
+                    Command="{Binding ClearLog}"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

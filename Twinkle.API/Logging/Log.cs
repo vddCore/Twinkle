@@ -22,9 +22,7 @@ internal sealed class Log : ILog
         _logManager.EnqueueWriteOperation(
             LogLevel.Information,
             _assemblyName,
-            msg,
-            Verbosity < LogLevel.Information,
-            !ForwardSuppressedMessagesToFile
+            msg
         );
     }
 
@@ -33,9 +31,7 @@ internal sealed class Log : ILog
         _logManager.EnqueueWriteOperation(
             LogLevel.Warning,
             _assemblyName,
-            msg,
-            Verbosity < LogLevel.Warning,
-            !ForwardSuppressedMessagesToFile
+            msg
         );
     }
 
@@ -44,9 +40,7 @@ internal sealed class Log : ILog
         _logManager.EnqueueWriteOperation(
             LogLevel.Error,
             _assemblyName,
-            msg,
-            Verbosity < LogLevel.Error,
-            !ForwardSuppressedMessagesToFile
+            msg
         );
     }
 
@@ -55,9 +49,7 @@ internal sealed class Log : ILog
         _logManager.EnqueueWriteOperation(
             LogLevel.Debug,
             _assemblyName,
-            msg,
-            Verbosity < LogLevel.Debug,
-            !ForwardSuppressedMessagesToFile
+            msg
         );
     }
 
@@ -98,9 +90,7 @@ internal sealed class Log : ILog
         _logManager.EnqueueWriteOperation(
             LogLevel.Exception,
             _assemblyName,
-            sb.ToString(),
-            Verbosity < LogLevel.Exception, 
-            !ForwardSuppressedMessagesToFile
+            sb.ToString()
         );
     }
 }

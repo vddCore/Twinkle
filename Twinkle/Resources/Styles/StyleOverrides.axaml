@@ -4,4 +4,51 @@
         <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="FontSize" Value="13" />
     </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader /template/ Grid#PART_ColumnHeaderRoot">
+        <Setter Property="Background"
+                Value="{DynamicResource DataGridColumnHeaderBackgroundBrush}" />
+
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background"
+                                 Duration="0:0:0.150"
+                                 Easing="CircularEaseOut" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridCell /template/ Grid#FocusVisual > Rectangle">
+        <Setter Property="Fill" Value="Transparent" />
+        <Setter Property="Stroke" Value="Transparent" />
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+
+    <Style Selector="DataGridRow">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="DataGridRow /template/ Border#RowBorder">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="DataGridRow /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="Transparent" />
+
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Fill"
+                                 Duration="0:0:0.150"
+                                 Easing="CircularEaseOut" />
+
+                <DoubleTransition Property="Opacity"
+                                  Duration="0:0:0.150"
+                                  Easing="CircularEaseOut" />
+            </Transitions>
+        </Setter>
+    </Style>
 </Styles>

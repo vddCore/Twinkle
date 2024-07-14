@@ -9,7 +9,7 @@ public sealed class FileSink : StreamSink
     
 
     public FileSink(string directory, string fileName, int maximumRecentLogFiles = 5)
-        : base(new FileStream(Path.Combine(directory, fileName), FileMode.Create), true)
+        : base(new FileStream(Path.Combine(directory, fileName), FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite), true)
     {
         Directory = new DirectoryInfo(directory);
         FileName = fileName;

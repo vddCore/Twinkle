@@ -8,8 +8,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <glitonea:Glitonea />
-                <ResourceInclude Source="avares://Twinkle.UI/Twinkle.UI.axaml" />
                 
+                <ResourceInclude Source="avares://Twinkle.UI/Twinkle.UI.axaml" />
                 <ResourceInclude Source="avares://Twinkle/Resources/Styles/Colors.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

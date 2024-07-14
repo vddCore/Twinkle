@@ -16,7 +16,7 @@ public sealed class LogManager
     private readonly Dictionary<string, Log> _logCache;
     private readonly Queue<LogMessage> _writeQueue;
 
-    public bool IsRunning => _cancellationTokenSource?.IsCancellationRequested ?? false; 
+    public bool IsRunning => !_cancellationTokenSource?.IsCancellationRequested ?? false; 
 
     public IReadOnlyList<Sink> ActiveSinks => _activeSinks;
 
@@ -64,9 +64,7 @@ public sealed class LogManager
     internal void EnqueueWriteOperation(
         LogLevel level,
         string sourceName,
-        string text,
-        bool suppressConsoleOutput = false,
-        bool suppressFileOutput = false)
+        string text)
     {
         lock (_writeQueue)
         {
@@ -75,9 +73,7 @@ public sealed class LogManager
                     DateTime.Now,
                     level,
                     sourceName,
-                    text, 
-                    suppressConsoleOutput, 
-                    suppressFileOutput
+                    text
                 )
             );
         }

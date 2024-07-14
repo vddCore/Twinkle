@@ -23,7 +23,7 @@ public class StreamSink : Sink, IDisposable
 
     public override void Write(LogMessage message)
     {
-        Stream.Write(Encoding.UTF8.GetBytes(message.ToString()));
+        Stream.Write(Encoding.UTF8.GetBytes(message + "\n"));
         Stream.Flush();
     }
 }

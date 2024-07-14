@@ -15,6 +15,7 @@
     <PackageReference Include="Avalonia.Svg" Version="11.0.0.18" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11"/>
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.11"/>
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.10.9" />
     <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
     <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.242" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
@@ -40,9 +41,5 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Resources\Vector\framework-cog.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Logging\" />
   </ItemGroup>
 </Project>

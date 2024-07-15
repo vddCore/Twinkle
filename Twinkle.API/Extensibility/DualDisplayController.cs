@@ -12,8 +12,8 @@ public abstract class DualDisplayController : DisplayController
     
     internal protected DualDisplayRenderer Renderer { get; }
 
-    internal protected DualDisplayController(LedDisplay leftDisplay, LedDisplay rightDisplay, ILog log) 
-        : base(log)
+    internal protected DualDisplayController(LedDisplay leftDisplay, LedDisplay rightDisplay, ApiContext apiContext, ILog log) 
+        : base(apiContext, log)
     {
         LeftDisplay = leftDisplay;
         RightDisplay = rightDisplay;
@@ -27,8 +27,8 @@ public abstract class DualDisplayController<T> : DualDisplayController where T :
 {
     public override object View => new T { DataContext = this };
     
-    internal protected DualDisplayController(LedDisplay leftDisplay, LedDisplay rightDisplay, ILog log)
-        : base(leftDisplay, rightDisplay, log)
+    internal protected DualDisplayController(LedDisplay leftDisplay, LedDisplay rightDisplay, ApiContext apiContext, ILog log)
+        : base(leftDisplay, rightDisplay, apiContext, log)
     {
     }
 }

@@ -11,8 +11,8 @@ public abstract class SingleDisplayController : DisplayController
     
     internal protected SingleDisplayRenderer Renderer { get; }
     
-    internal protected SingleDisplayController(LedDisplay display, ILog log)
-        : base(log)
+    internal protected SingleDisplayController(LedDisplay display, ApiContext apiContext, ILog log)
+        : base(apiContext, log)
     {
         Display = display;
         Renderer = new SingleDisplayRenderer(display);
@@ -23,8 +23,8 @@ public abstract class SingleDisplayController<T> : SingleDisplayController where
 {
     public override object View => new T { DataContext = this };
     
-    internal protected SingleDisplayController(LedDisplay display, ILog log)
-        : base(display, log)
+    internal protected SingleDisplayController(LedDisplay display, ApiContext apiContext, ILog log)
+        : base(display, apiContext, log)
     {
     }
 }

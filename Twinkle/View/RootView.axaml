@@ -13,9 +13,11 @@
                 BorderThickness="0,0,0,1"
                 BorderBrush="{DynamicResource WindowCaptionBorderBrush}" />
 
-        <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Button Margin="4,4,-1,2"
+        <Grid Grid.Row="0"
+              Margin="0,0,100,0">
+            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <Button Grid.Column="0"
+                        Margin="4,4,-1,2"
                         VerticalAlignment="Bottom"
                         VerticalContentAlignment="Center"
                         Command="{Binding RequestDeviceRescan}"
@@ -26,27 +28,34 @@
                         FontSize="12"
                         ToolTip.Tip="Rescan devices" />
                  
-                <RadioButton Classes="MainViewContextSelector"
+                <RadioButton Grid.Column="1"
+                             Classes="MainViewContextSelector"
                              Content="display control"
                              IsChecked="True"
                              Command="{Binding MainViewContextSelectionChanged}"
                              CommandParameter="{x:Static view:ContentPage.DisplayControl}" />
 
-                <RadioButton Classes="MainViewContextSelector"
+                <RadioButton Grid.Column="2"
+                             Classes="MainViewContextSelector"
                              Content="settings" 
                              Command="{Binding MainViewContextSelectionChanged}"
                              CommandParameter="{x:Static view:ContentPage.Settings}"/>
 
-                <RadioButton Classes="MainViewContextSelector"
+                <RadioButton Grid.Column="3"
+                             Classes="MainViewContextSelector"
                              Content="scripting" 
                              Command="{Binding MainViewContextSelectionChanged}"
                              CommandParameter="{x:Static view:ContentPage.Scripting}" />
                 
-                <RadioButton Classes="MainViewContextSelector"
-                             Content="developer" 
+                <RadioButton Grid.Column="4"
+                             Classes="MainViewContextSelector"
+                             FontFamily="Segoe Fluent Icons"
+                             Content="&#xEBE8;" 
                              Command="{Binding MainViewContextSelectionChanged}"
-                             CommandParameter="{x:Static view:ContentPage.Developer}" />
-            </StackPanel>
+                             CommandParameter="{x:Static view:ContentPage.Developer}"
+                             Opacity="{Binding AppSettings.Model.ShowDevelopmentTab}"
+                             IsHitTestVisible="{Binding AppSettings.Model.ShowDevelopmentTab}" />
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="1">

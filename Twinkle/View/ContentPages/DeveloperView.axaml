@@ -6,7 +6,7 @@
              x:Class="Twinkle.View.ContentPages.DeveloperView"
              DataContext="{mvvm:DataContextSource contentPages:DeveloperViewModel}">
     <Grid RowDefinitions="*,Auto"
-          Margin="7,7,7,4">
+          Margin="6,6,6,4">
         <DataGrid Grid.Row="0"
                   ItemsSource="{Binding LogMessages}"
                   IsReadOnly="True"
@@ -22,7 +22,7 @@
             <Interaction.Behaviors>
                 <behaviors:LogDataGridScrollBehavior />
             </Interaction.Behaviors>
-            
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Time"
                                     Binding="{Binding Timestamp}"
@@ -42,16 +42,32 @@
                                     Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal"
-                    Spacing="4"
-                    Margin="0,4,0,0">
-            <Button Content="Open log file" 
-                    Command="{Binding OpenLogFile}" />
+
+        <Grid Grid.Row="1"
+              Margin="0,4,0,0">
+            <SplitButton Content="&#xE8B7;"
+                         FontFamily="Segoe Fluent Icons"
+                         HorizontalAlignment="Left"
+                         Command="{Binding OpenApplicationDirectory}"
+                         ToolTip.Tip="Open application directory">
+                <SplitButton.Flyout>
+                    <MenuFlyout HorizontalOffset="64">
+                        <MenuItem Header="Plugin directory" Command="{Binding OpenPluginDirectory}" />
+                        <MenuItem Header="Settings directory" Command="{Binding OpenSettingsDirectory}" />
+                        <MenuItem Header="Log directory" Command="{Binding OpenLogDirectory}" />
+                    </MenuFlyout>
+                </SplitButton.Flyout>
+            </SplitButton>
             
-            <Button Content="Clear log" 
-                    Command="{Binding ClearLog}"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="4">
+                <Button Content="Open log file"
+                        Command="{Binding OpenLogFile}" />
+
+                <Button Content="Clear log"
+                        Command="{Binding ClearLog}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

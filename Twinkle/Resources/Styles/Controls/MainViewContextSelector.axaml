@@ -34,6 +34,7 @@
                 <BrushTransition Property="BorderBrush" Duration="0:0:0.150" />
                 <DoubleTransition Property="MinHeight" Duration="0:0:0.150" />
                 <ThicknessTransition Property="Margin" Duration="0:0:0.150" />
+                <DoubleTransition Property="Opacity" Duration="0:0:0.150" />
             </Transitions>
         </Setter>
     </Style>

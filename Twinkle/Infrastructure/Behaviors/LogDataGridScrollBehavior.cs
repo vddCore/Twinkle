@@ -27,8 +27,7 @@ public class LogDataGridScrollBehavior : Behavior<DataGrid>
 
     private void Observable_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
-        if (e.Action == NotifyCollectionChangedAction.Add
-            || e.Action == NotifyCollectionChangedAction.Remove)
+        if (e.Action == NotifyCollectionChangedAction.Add || e.Action == NotifyCollectionChangedAction.Remove)
         {
             AssociatedObject?.ScrollIntoView(_messages.LastOrDefault(), null);
         }

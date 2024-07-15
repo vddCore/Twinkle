@@ -4,7 +4,21 @@
              xmlns:contentPages="clr-namespace:Twinkle.ViewModel.ContentPages"
              x:Class="Twinkle.View.ContentPages.SettingsView"
              DataContext="{mvvm:DataContextSource contentPages:SettingsViewModel}">
-    <TextBlock Text="Settings will be here one day." 
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <Border CornerRadius="6"
+            Margin="6"
+            Padding="6"
+            BorderBrush="{DynamicResource GenericBorderBrush}"
+            Background="{DynamicResource GenericBorderBackgroundBrush}"
+            BorderThickness="1">
+        <Grid RowDefinitions="Auto,*">
+            <TextBlock FontSize="16"
+                       Text="Advanced settings" />
+
+            <StackPanel Grid.Row="1">
+                <ToggleSwitch OffContent="Development tab disabled"
+                              OnContent="Development tab enabled"
+                              IsChecked="{Binding AppSettings.Model.ShowDevelopmentTab, Mode=TwoWay}" />
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>

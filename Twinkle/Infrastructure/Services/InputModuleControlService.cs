@@ -1,11 +1,21 @@
 ﻿namespace Twinkle.Infrastructure.Services;
 
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 using Starlight.Framework;
 
 public class InputModuleControlService : IInputModuleControlService
-{ 
-    public List<LedDisplay> EnumerateDisplays()
-        => LedDisplay.Enumerate().ToList();
+{
+    public ObservableCollection<LedDisplay> Displays { get; } = new();
+
+    public void RescanDisplays()
+    {
+        Displays.Clear();
+
+        foreach (var display in LedDisplay.Enumerate())
+        {
+            Displays.Add(display);
+        }
+        
+        new DevicesRescannedMessage().Broadcast();
+    }
 }

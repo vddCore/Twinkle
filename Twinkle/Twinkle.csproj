@@ -38,6 +38,14 @@
       <DependentUpon>MainWindow.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\DisplayLinkedControlView.axaml.cs">
+      <DependentUpon>DisplayLinkedControlView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DisplaySeparateControlView.axaml.cs">
+      <DependentUpon>DisplaySeparateControlView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

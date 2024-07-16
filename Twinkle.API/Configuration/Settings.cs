@@ -41,7 +41,10 @@ public class Settings<T> where T: INotifyPropertyChanged, new()
     {
         using (var fs = new FileStream(FilePath, FileMode.Create))
         {
-            JsonSerializer.Serialize(fs, Model);
+            JsonSerializer.Serialize(fs, Model, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
         }
     }
 }

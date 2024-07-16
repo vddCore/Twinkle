@@ -1,0 +1,99 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
+             xmlns:model="clr-namespace:Twinkle.Model"
+             xmlns:controls="clr-namespace:Twinkle.UI.Controls;assembly=Twinkle.UI"
+             xmlns:view="clr-namespace:Twinkle.View"
+             xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
+             x:Class="Twinkle.View.DisplaySeparateControlView"
+             DataContext="{mvvm:DataContextSource viewModel:DisplaySeparateControlViewModel}">
+       <Grid ColumnDefinitions="Auto,*">
+        <ItemsControl Grid.Column="0"
+                      Margin="6,10"
+                      ItemsSource="{Binding Displays}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="3" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="model:LedDisplayModel">
+                    <controls:InputModuleSelector HorizontalAlignment="Left"
+                                                  VerticalAlignment="Stretch"
+                                                  GroupName="Displays"
+                                                  IsChecked="{Binding IsSelected, Mode=OneWay}"
+                                                  Command="{Binding $parent[view:DisplaySeparateControlView].DataContext.InputModuleSelectionChanged}"
+                                                  CommandParameter="{Binding}">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Opacity="0.55">
+                            <Run Text="{Binding DeviceIndex, StringFormat='Display {0}'}" />
+                            <LineBreak />
+                            <Run Text="{Binding Display.SerialNumber}" />
+                        </TextBlock>
+                    </controls:InputModuleSelector>
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+
+        <Grid Grid.Column="1">
+            <Border BorderBrush="{DynamicResource GenericBorderBrush}"
+                    Background="#05FFFFFF"
+                    BorderThickness="1"
+                    Margin="0,6,6,6"
+                    CornerRadius="6">
+                <Grid>
+                    <TextBlock
+                        Text="Please select a module&#x0A; to see available actions"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Opacity="{Binding SelectionPromptOpacity}">
+                        <TextBlock.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="0:0:0.150"
+                                                  Easing="CircularEaseOut" />
+                            </Transitions>
+                        </TextBlock.Transitions>
+                    </TextBlock>
+
+                    <Grid RowDefinitions="Auto,*"
+                          Opacity="{Binding ControlActionListOpacity}">
+                        <ComboBox Grid.Row="0"
+                                  ItemsSource="{Binding AvailablePlugins}"
+                                  SelectedItem="{Binding CurrentPluginModel, Mode=TwoWay}"
+                                  Margin="4"
+                                  HorizontalAlignment="Stretch"
+                                  PlaceholderText="&lt;select a controller plugin&gt;">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate DataType="model:PluginModel">
+                                    <TextBlock>
+                                        <Run Text="{Binding Name}" />
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Border Grid.Row="1"
+                                BorderThickness="0,1,0,0"
+                                BorderBrush="{DynamicResource GenericBorderBrush}"
+                                Margin="4,0,4,4" />
+                        
+                        <TransitioningContentControl Grid.Row="1"
+                                                     Margin="8,12,8,8"
+                                                     Content="{Binding CurrentPluginView, Mode=OneWay}">
+                            <TransitioningContentControl.PageTransition>
+                                <CrossFade Duration="0:0:0.150"
+                                           FadeInEasing="CircularEaseIn"
+                                           FadeOutEasing="CircularEaseOut" />
+                            </TransitioningContentControl.PageTransition>
+                        </TransitioningContentControl>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

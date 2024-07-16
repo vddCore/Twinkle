@@ -1,0 +1,11 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
+             xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
+             x:Class="Twinkle.View.DisplayLinkedControlView"
+             DataContext="{mvvm:DataContextSource viewModel:DisplayLinkedControlViewModel}">
+    <TextBlock HorizontalAlignment="Center"
+               VerticalAlignment="Center">
+        There will be a linked display thing here soonish.
+    </TextBlock>
+</UserControl>

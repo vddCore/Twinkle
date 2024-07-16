@@ -1,10 +1,11 @@
 ﻿namespace Twinkle.Infrastructure.Services;
 
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Glitonea.Mvvm;
 using Starlight.Framework;
 
 public interface IInputModuleControlService : IService
 {
-    List<LedDisplay> EnumerateDisplays();
+    ObservableCollection<LedDisplay> Displays { get; }
+    void RescanDisplays();
 }

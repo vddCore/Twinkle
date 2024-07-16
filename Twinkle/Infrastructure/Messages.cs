@@ -2,4 +2,4 @@
 
 using Glitonea.Mvvm.Messaging;
 
-public record DeviceRescanRequestedMessage : Message;
+public record DevicesRescannedMessage : Message;

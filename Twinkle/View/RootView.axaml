@@ -30,10 +30,25 @@
                  
                 <RadioButton Grid.Column="1"
                              Classes="MainViewContextSelector"
-                             Content="display control"
                              IsChecked="True"
                              Command="{Binding MainViewContextSelectionChanged}"
-                             CommandParameter="{x:Static view:ContentPage.DisplayControl}" />
+                             CommandParameter="{x:Static view:ContentPage.DisplayControl}">
+                    <Grid ColumnDefinitions="*,Auto" 
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center">
+                        <ToggleButton Grid.Column="0"
+                                      Classes="DisplayControlModeToggleButton"
+                                      BorderThickness="0"
+                                      Background="Transparent"
+                                      Padding="0"
+                                      Margin="-4,0,8,0"
+                                      IsChecked="{Binding AppSettings.Model.LinkedDisplayMode, Mode=TwoWay}"
+                                      ToolTip.Tip="Toggle display mode" />
+                        
+                        <TextBlock Grid.Column="1"
+                                   Text="display control" />
+                    </Grid>
+                </RadioButton>
 
                 <RadioButton Grid.Column="2"
                              Classes="MainViewContextSelector"

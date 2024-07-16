@@ -50,5 +50,6 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Resources\Vector\framework-cog.svg" />
+    <None Remove="Resources\Vector\led-input-module-sketch-double.svg" />
   </ItemGroup>
 </Project>

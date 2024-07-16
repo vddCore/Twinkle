@@ -20,7 +20,7 @@
                         Margin="4,4,-1,2"
                         VerticalAlignment="Bottom"
                         VerticalContentAlignment="Center"
-                        Command="{Binding RequestDeviceRescan}"
+                        Command="{Binding RescanDisplays}"
                         CornerRadius="6,6,0,0"
                         Content="&#xE117;"
                         Padding="8,6,8,5"
@@ -33,19 +33,25 @@
                              IsChecked="True"
                              Command="{Binding MainViewContextSelectionChanged}"
                              CommandParameter="{x:Static view:ContentPage.DisplayControl}">
-                    <Grid ColumnDefinitions="*,Auto" 
+                    <Grid ColumnDefinitions="Auto,Auto,*" 
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center">
                         <ToggleButton Grid.Column="0"
                                       Classes="DisplayControlModeToggleButton"
-                                      BorderThickness="0"
-                                      Background="Transparent"
-                                      Padding="0"
-                                      Margin="-4,0,8,0"
+                                      Margin="-4,0,6,0"
+                                      IsVisible="{Binding IsMultiDisplaySetup}"
                                       IsChecked="{Binding AppSettings.Model.LinkedDisplayMode, Mode=TwoWay}"
                                       ToolTip.Tip="Toggle display mode" />
                         
-                        <TextBlock Grid.Column="1"
+                        <Button Grid.Column="1"
+                                Classes="DisplaySideSwitchButton"
+                                BorderThickness="0"
+                                Margin="0,0,6,0"
+                                IsVisible="{Binding IsMultiDisplaySetup}"
+                                Command="{Binding RearrangeDisplays}"
+                                ToolTip.Tip="Rearrange displays" />
+                                
+                        <TextBlock Grid.Column="2"
                                    Text="display control" />
                     </Grid>
                 </RadioButton>

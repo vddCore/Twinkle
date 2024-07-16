@@ -3,6 +3,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Glitonea.Mvvm;
+using Twinkle.API.Configuration;
 using Twinkle.API.Extensibility;
 using Twinkle.API.Logging;
 using Twinkle.Infrastructure;
@@ -12,10 +13,13 @@ using Twinkle.Model;
 public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
 {
     private readonly IInputModuleControlService _inputModuleControlService;
+    private readonly ISettingsService _settingsService;
     private readonly IPluginSystem _pluginSystem;
     private readonly ILog _log;
 
     private LedDisplayModel? _selectedDisplay;
+
+    public Settings<SettingsModel> AppSettings => _settingsService.AppSettings;
 
     public ObservableCollection<LedDisplayModel> Displays { get; } = new();
 
@@ -50,11 +54,11 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
                 _selectedDisplay.IsSelected = true;
             }
 
-            OnPropertyChanged();
             OnPropertyChanged(nameof(IsAnyDisplaySelected));
             OnPropertyChanged(nameof(ControlActionListOpacity));
             OnPropertyChanged(nameof(SelectionPromptOpacity));
             OnPropertyChanged(nameof(CurrentPluginView));
+            OnPropertyChanged();
         }
     }
 
@@ -91,21 +95,24 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
     }
 
     public object? CurrentPluginView => SelectedDisplay?.CurrentPlugin?.View;
-    
+
+
     public DisplaySeparateControlViewModel(
         IInputModuleControlService inputModuleControlService,
+        ISettingsService settingsService,
         IPluginSystem pluginSystem,
         ILogService logService)
     {
         _inputModuleControlService = inputModuleControlService;
+        _settingsService = settingsService;
         _pluginSystem = pluginSystem;
         _log = logService.GetLog();
 
         RefreshDisplayCollection();
-        
+
         Subscribe<DevicesRescannedMessage>(OnDevicesRescanned);
     }
-    
+
     ~DisplaySeparateControlViewModel()
     {
         Unsubscribe<DevicesRescannedMessage>();
@@ -114,7 +121,7 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
     public void InputModuleSelectionChanged(object? parameter)
     {
         if (parameter is not LedDisplayModel ldm)
-            return; 
+            return;
 
         if (SelectedDisplay == ldm)
             return;
@@ -129,10 +136,24 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
     {
         SelectedDisplay = null;
         Displays.Clear();
-        
-        for (var i = 0; i < _inputModuleControlService.Displays.Count; i++)
+
+        if (_inputModuleControlService.Displays.Count > 1)
         {
-            Displays.Add(new LedDisplayModel(_inputModuleControlService.Displays[i], i));
+            var left = _inputModuleControlService.Displays.First(
+                x => x.SerialNumber == AppSettings.Model.LeftDeviceSerialNumber
+            );
+            
+            var right = _inputModuleControlService.Displays.First(
+                x => x.SerialNumber == AppSettings.Model.RightDeviceSerialNumber
+            );
+
+
+            Displays.Add(new LedDisplayModel(left, _inputModuleControlService.Displays.IndexOf(left)));
+            Displays.Add(new LedDisplayModel(right, _inputModuleControlService.Displays.IndexOf(right)));
+        }
+        else if (_inputModuleControlService.Displays.Count == 1)
+        {
+            Displays.Add(new LedDisplayModel(_inputModuleControlService.Displays[0], 0));
         }
     }
 }

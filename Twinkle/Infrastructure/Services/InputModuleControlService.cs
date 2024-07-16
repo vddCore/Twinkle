@@ -15,7 +15,5 @@ public class InputModuleControlService : IInputModuleControlService
         {
             Displays.Add(display);
         }
-        
-        new DevicesRescannedMessage().Broadcast();
     }
 }

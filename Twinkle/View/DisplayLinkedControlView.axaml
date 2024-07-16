@@ -2,10 +2,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
              xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
+             xmlns:model="clr-namespace:Twinkle.Model"
+             xmlns:controls="clr-namespace:Twinkle.UI.Controls;assembly=Twinkle.UI"
              x:Class="Twinkle.View.DisplayLinkedControlView"
              DataContext="{mvvm:DataContextSource viewModel:DisplayLinkedControlViewModel}">
-    <TextBlock HorizontalAlignment="Center"
-               VerticalAlignment="Center">
-        There will be a linked display thing here soonish.
-    </TextBlock>
+    <Grid ColumnDefinitions="Auto,*">
+        <controls:DoubleInputModuleVisual Grid.Column="0" />
+
+        <Grid Grid.Column="1">
+            <Border BorderBrush="{DynamicResource GenericBorderBrush}"
+                    Background="#05FFFFFF"
+                    BorderThickness="1"
+                    Margin="0,6,6,6"
+                    CornerRadius="6">
+                <Grid RowDefinitions="Auto,*">
+                    <ComboBox Grid.Row="0"
+                              ItemsSource="{Binding AvailablePlugins}"
+                              SelectedItem="{Binding CurrentPluginModel, Mode=TwoWay}"
+                              Margin="4"
+                              HorizontalAlignment="Stretch"
+                              PlaceholderText="&lt;select a controller plugin&gt;">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate DataType="model:PluginModel">
+                                <TextBlock>
+                                    <Run Text="{Binding Name}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Border Grid.Row="1"
+                            BorderThickness="0,1,0,0"
+                            BorderBrush="{DynamicResource GenericBorderBrush}"
+                            Margin="4,0,4,4" />
+
+                    <TransitioningContentControl Grid.Row="1"
+                                                 Margin="8,12,8,8"
+                                                 Content="{Binding CurrentPluginView, Mode=OneWay}">
+                        <TransitioningContentControl.PageTransition>
+                            <CrossFade Duration="0:0:0.150"
+                                       FadeInEasing="CircularEaseIn"
+                                       FadeOutEasing="CircularEaseOut" />
+                        </TransitioningContentControl.PageTransition>
+                    </TransitioningContentControl>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
 </UserControl>

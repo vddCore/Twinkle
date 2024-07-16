@@ -25,5 +25,6 @@
         <StyleInclude Source="avares://Twinkle/Resources/Styles/StyleOverrides.axaml" />
         <StyleInclude Source="avares://Twinkle/Resources/Styles/Controls/MainViewContextSelector.axaml" />
         <StyleInclude Source="avares://Twinkle/Resources/Styles/Controls/DisplayControlModeToggleButton.axaml" />
+        <StyleInclude Source="avares://Twinkle/Resources/Styles/Controls/DisplaySideSwitchButton.axaml" />
     </Application.Styles>
 </Application>

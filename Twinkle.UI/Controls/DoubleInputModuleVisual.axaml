@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Twinkle.UI.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Twinkle.UI.Controls.DoubleInputModuleVisual">
+    <StackPanel Orientation="Horizontal"
+                Margin="6,10">
+        <Grid>
+            <Svg HorizontalAlignment="Center"
+                 VerticalAlignment="Stretch"
+                 Margin="2.5,0,2.5,0"
+                 Path="/Assets/Vector/led-input-module-sketch-filled.svg"
+                 Css="{DynamicResource InputModuleOutlineFillSvgStylesheet}"
+                 Opacity="0.35" />
+            
+            <ContentPresenter Content="{Binding $parent[controls:DoubleInputModuleVisual].LeftModuleContent}" 
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch" />
+        </Grid>
+
+
+        <Grid Margin="-3,0,3,0">
+            <Svg HorizontalAlignment="Center"
+                 VerticalAlignment="Stretch"
+                 Path="/Assets/Vector/led-input-module-sketch-filled.svg"
+                 Css="{DynamicResource InputModuleOutlineFillSvgStylesheet}"
+                 Opacity="0.35" />
+            
+            <ContentPresenter Content="{Binding $parent[controls:DoubleInputModuleVisual].RightModuleContent}"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch" />
+        </Grid>
+    </StackPanel>
+</UserControl>

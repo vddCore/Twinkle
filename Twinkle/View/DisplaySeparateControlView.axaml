@@ -7,7 +7,7 @@
              xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
              x:Class="Twinkle.View.DisplaySeparateControlView"
              DataContext="{mvvm:DataContextSource viewModel:DisplaySeparateControlViewModel}">
-       <Grid ColumnDefinitions="Auto,*">
+    <Grid ColumnDefinitions="Auto,*">
         <ItemsControl Grid.Column="0"
                       Margin="6,10"
                       ItemsSource="{Binding Displays}">
@@ -22,7 +22,7 @@
                     <controls:InputModuleSelector HorizontalAlignment="Left"
                                                   VerticalAlignment="Stretch"
                                                   GroupName="Displays"
-                                                  IsChecked="{Binding IsSelected, Mode=OneWay}"
+                                                  IsChecked="{Binding IsSelected}"
                                                   Command="{Binding $parent[view:DisplaySeparateControlView].DataContext.InputModuleSelectionChanged}"
                                                   CommandParameter="{Binding}">
                         <TextBlock HorizontalAlignment="Center"
@@ -81,7 +81,7 @@
                                 BorderThickness="0,1,0,0"
                                 BorderBrush="{DynamicResource GenericBorderBrush}"
                                 Margin="4,0,4,4" />
-                        
+
                         <TransitioningContentControl Grid.Row="1"
                                                      Margin="8,12,8,8"
                                                      Content="{Binding CurrentPluginView, Mode=OneWay}">

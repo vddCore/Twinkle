@@ -10,7 +10,7 @@ using Twinkle.Infrastructure;
 using Twinkle.Infrastructure.Services;
 using Twinkle.Model;
 
-public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
+public class DisplaySeparateControlViewModel : ViewModelBase
 {
     private readonly IInputModuleControlService _inputModuleControlService;
     private readonly ISettingsService _settingsService;
@@ -21,7 +21,7 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
 
     public Settings<SettingsModel> AppSettings => _settingsService.AppSettings;
 
-    public ObservableCollection<LedDisplayModel> Displays { get; } = new();
+    public ObservableCollection<LedDisplayModel> Displays { get; } = [];
 
     public bool IsAnyDisplaySelected => _selectedDisplay != null;
 
@@ -62,7 +62,7 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
         }
     }
 
-    public PluginModel? CurrentPluginModel
+    public PluginModel? SelectedPluginModel
     {
         get => SelectedDisplay?.CurrentPluginModel;
 
@@ -95,7 +95,6 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
     }
 
     public object? CurrentPluginView => SelectedDisplay?.CurrentPlugin?.View;
-
 
     public DisplaySeparateControlViewModel(
         IInputModuleControlService inputModuleControlService,
@@ -146,7 +145,6 @@ public class DisplaySeparateControlViewModel : SingleInstanceViewModelBase
             var right = _inputModuleControlService.Displays.First(
                 x => x.SerialNumber == AppSettings.Model.RightDeviceSerialNumber
             );
-
 
             Displays.Add(new LedDisplayModel(left, _inputModuleControlService.Displays.IndexOf(left)));
             Displays.Add(new LedDisplayModel(right, _inputModuleControlService.Displays.IndexOf(right)));

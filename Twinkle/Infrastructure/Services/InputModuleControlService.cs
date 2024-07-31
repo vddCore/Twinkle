@@ -5,7 +5,7 @@ using Starlight.Framework;
 
 public class InputModuleControlService : IInputModuleControlService
 {
-    public ObservableCollection<LedDisplay> Displays { get; } = new();
+    public ObservableCollection<LedDisplay> Displays { get; } = [];
 
     public void RescanDisplays()
     {

@@ -14,10 +14,10 @@
                  Path="/Assets/Vector/led-input-module-sketch-filled.svg"
                  Css="{DynamicResource InputModuleOutlineFillSvgStylesheet}"
                  Opacity="0.35" />
-            
             <ContentPresenter Content="{Binding $parent[controls:DoubleInputModuleVisual].LeftModuleContent}" 
                               HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch" />
+                              VerticalAlignment="Stretch"
+                              Margin="0,0,0,40" />
         </Grid>
 
 
@@ -30,7 +30,8 @@
             
             <ContentPresenter Content="{Binding $parent[controls:DoubleInputModuleVisual].RightModuleContent}"
                               HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch" />
+                              VerticalAlignment="Stretch" 
+                              Margin="0,0,0,40" />
         </Grid>
     </StackPanel>
 </UserControl>

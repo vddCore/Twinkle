@@ -11,7 +11,7 @@ public sealed class LogManager
 {
     private CancellationTokenSource? _cancellationTokenSource;
 
-    private readonly List<Sink> _activeSinks = new();
+    private readonly List<Sink> _activeSinks = [];
 
     private readonly Dictionary<string, Log> _logCache;
     private readonly Queue<LogMessage> _writeQueue;

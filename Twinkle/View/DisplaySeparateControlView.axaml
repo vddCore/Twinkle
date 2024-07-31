@@ -1,12 +1,9 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
              xmlns:model="clr-namespace:Twinkle.Model"
              xmlns:controls="clr-namespace:Twinkle.UI.Controls;assembly=Twinkle.UI"
              xmlns:view="clr-namespace:Twinkle.View"
-             xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
-             x:Class="Twinkle.View.DisplaySeparateControlView"
-             DataContext="{mvvm:DataContextSource viewModel:DisplaySeparateControlViewModel}">
+             x:Class="Twinkle.View.DisplaySeparateControlView">
     <Grid ColumnDefinitions="Auto,*">
         <ItemsControl Grid.Column="0"
                       Margin="6,10"
@@ -64,7 +61,7 @@
                           Opacity="{Binding ControlActionListOpacity}">
                         <ComboBox Grid.Row="0"
                                   ItemsSource="{Binding AvailablePlugins}"
-                                  SelectedItem="{Binding CurrentPluginModel, Mode=TwoWay}"
+                                  SelectedItem="{Binding SelectedPluginModel, Mode=TwoWay}"
                                   Margin="4"
                                   HorizontalAlignment="Stretch"
                                   PlaceholderText="&lt;select a controller plugin&gt;">

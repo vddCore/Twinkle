@@ -12,7 +12,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
 
     public Settings<SettingsModel> AppSettings => _settingsService.AppSettings;
 
-    public SingleInstanceViewModelBase CurrentDisplayModeViewModel { get; set; } = null!;
+    public ViewModelBase CurrentDisplayModeViewModel { get; set; } = null!;
 
     public DisplayControlViewModel(ISettingsService settingsService)
     {
@@ -33,7 +33,7 @@ public class DisplayControlViewModel : SingleInstanceViewModelBase
     private void UpdateCurrentDisplayModeView()
     {
         CurrentDisplayModeViewModel = AppSettings.Model.LinkedDisplayMode
-            ? ViewModelResolver.Instance.ResolveSingle<DisplayLinkedControlViewModel>()
-            : ViewModelResolver.Instance.ResolveSingle<DisplaySeparateControlViewModel>();
+            ? ViewModelResolver.Instance.Resolve<DisplayLinkedControlViewModel>()
+            : ViewModelResolver.Instance.Resolve<DisplaySeparateControlViewModel>();
     }
 }

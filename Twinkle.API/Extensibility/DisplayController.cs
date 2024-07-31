@@ -24,7 +24,7 @@ public abstract class DisplayController
     protected virtual void OnDeactivated()
     {
     }
-            
+    
     internal virtual void Activate()
     {
         try

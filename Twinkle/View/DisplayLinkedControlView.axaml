@@ -1,13 +1,46 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mvvm="clr-namespace:Glitonea.Mvvm;assembly=Glitonea"
-             xmlns:viewModel="clr-namespace:Twinkle.ViewModel"
              xmlns:model="clr-namespace:Twinkle.Model"
              xmlns:controls="clr-namespace:Twinkle.UI.Controls;assembly=Twinkle.UI"
-             x:Class="Twinkle.View.DisplayLinkedControlView"
-             DataContext="{mvvm:DataContextSource viewModel:DisplayLinkedControlViewModel}">
+             x:Class="Twinkle.View.DisplayLinkedControlView">
     <Grid ColumnDefinitions="Auto,*">
-        <controls:DoubleInputModuleVisual Grid.Column="0" />
+        <controls:DoubleInputModuleVisual Grid.Column="0">
+            <controls:DoubleInputModuleVisual.LeftModuleContent>
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center">
+                    <Run Foreground="#99FFFFFF"
+                         Text="LEFT"
+                         FontSize="16"
+                         FontWeight="SemiBold" />
+                    
+                    <LineBreak />
+                    
+                    <Run Foreground="#99FFFFFF"
+                         Text="{Binding LeftModule.Display.SerialNumber}"
+                         FontSize="12"
+                         FontWeight="SemiLight" />
+                </TextBlock>
+            </controls:DoubleInputModuleVisual.LeftModuleContent>
+
+            <controls:DoubleInputModuleVisual.RightModuleContent>
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center">
+                    <Run Foreground="#99FFFFFF"
+                         Text="RIGHT"
+                         FontSize="16"
+                         FontWeight="SemiBold" />
+                    
+                    <LineBreak />
+                    
+                    <Run Foreground="#99FFFFFF"
+                         Text="{Binding RightModule.Display.SerialNumber}"
+                         FontSize="12"
+                         FontWeight="SemiLight" />
+                </TextBlock>
+            </controls:DoubleInputModuleVisual.RightModuleContent>
+        </controls:DoubleInputModuleVisual>
 
         <Grid Grid.Column="1">
             <Border BorderBrush="{DynamicResource GenericBorderBrush}"
@@ -18,7 +51,7 @@
                 <Grid RowDefinitions="Auto,*">
                     <ComboBox Grid.Row="0"
                               ItemsSource="{Binding AvailablePlugins}"
-                              SelectedItem="{Binding CurrentPluginModel, Mode=TwoWay}"
+                              SelectedItem="{Binding SelectedPluginModel, Mode=TwoWay}"
                               Margin="4"
                               HorizontalAlignment="Stretch"
                               PlaceholderText="&lt;select a controller plugin&gt;">

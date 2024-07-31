@@ -12,8 +12,8 @@ using Twinkle.Model;
 public class PluginSystem : IPluginSystem
 {
     private readonly ILog _log;
-    
-    public ObservableCollection<PluginModel> Plugins { get; } = new();
+
+    public ObservableCollection<PluginModel> Plugins { get; } = [];
 
     public ApiContext ApiContext => App.ApiContext;
 

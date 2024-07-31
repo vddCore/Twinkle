@@ -10,8 +10,8 @@ using Twinkle.Infrastructure.Services;
 public class DeveloperViewModel : SingleInstanceViewModelBase
 {
     private readonly ILogService _logService;
-    
-    public ObservableCollection<LogMessage> LogMessages { get; } = new();
+
+    public ObservableCollection<LogMessage> LogMessages { get; } = [];
     public int BufferLength { get; set; } = 5000;
 
     public DeveloperViewModel(ILogService logService)
